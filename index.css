@@ -24,20 +24,14 @@ header{
     text-align: center;
 }
 
-button{
-    
-}
-
-button:hover{
-    
-}
-
+/* Buttons */
 #play{
     background-color: #73854A;
     color:#2B331B;
     border: 2px solid #2B331B;
     padding: 18px 26px;
     cursor: pointer;
+    font-size: 30px;
 }
 
 #play:hover{
@@ -45,13 +39,34 @@ button:hover{
     transition: transform .4s;
     transform: scale(1.1);
 }
+.options{
+    margin-bottom: 40px;
+}
+
+.level{
+    background-color: #73854A;
+    color:#2B331B;
+    border: 2px solid #2B331B;
+    padding: 18px 26px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.level:hover{
+    background-color: #2B331B;
+    color:#73854A;
+}
+
+.active{
+    background-color: #2B331B;
+    color:#73854A;
+}
 
 
 /* container */
 .container{
     max-width: 500px;
     margin: 0 auto;
-
 }
 
 /* menu */

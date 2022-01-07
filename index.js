@@ -18,10 +18,34 @@ const gridEl = document.querySelector(".grid")
 const scoreEl = document.getElementById("score")
 const lifeEl = document.getElementById("life")
 const playBtn = document.getElementById("play")
-
-
+const easyBtn = document.getElementById("easy")
+const mediumBtn = document.getElementById("medium")
+const hardBtn = document.getElementById("hard")
 
 /* ----- Grid and snake initialisation ------ */
+easyBtn.addEventListener("click",function(){
+    speed = 300
+    mediumBtn.classList.remove("active")
+    hardBtn.classList.remove("active")
+    easyBtn.classList.add("active")
+   
+})
+
+mediumBtn.addEventListener("click",function(){
+    speed = 200
+    easyBtn.classList.remove("active")
+    hardBtn.classList.remove("active")
+    mediumBtn.classList.add("active")
+})
+
+hardBtn.addEventListener("click",function(){
+    speed = 100
+    mediumBtn.classList.remove("active")
+    easyBtn.classList.remove("active")
+    hardBtn.classList.add("active")
+})
+
+
 playBtn.addEventListener("click",set_game)
 
 
