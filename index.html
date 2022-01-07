@@ -4,30 +4,35 @@
     <!-- HEAD -->
     <head>
         <title>Snake Game</title>
-
+        
+        <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
         <link href="index.css" rel="stylesheet">
     </head>
 
     
     <!-- BODY -->
     <body>
-
+        <!-- header -->
         <header><h1>SNAKE GAME</h1></header>
-
+        
+        <!-- container -->
         <div class="container">
 
+            <!-- score & life board -->
             <div class="board">
-                <h2>Score : <span id="score">-</span></h2>
-                <h2><span id="life">Life</span></h2>
+                <h3>Score: <span id="score">-</span></h3>
+                <div class="heart">
+                    <span id="life">❤️❤️❤️</span>
+                </div>
             </div>
             
+            <!-- grid -->
             <div class="grid">
             </div>
-           
         </div>
 
         <!-- script JS -->
         <script src="index.js"></script>
-
     </body>
 </html>
