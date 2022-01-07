@@ -19,17 +19,33 @@
         <!-- container -->
         <div class="container">
 
-            <!-- score & life board -->
-            <div class="board">
-                <h3>Score: <span id="score">-</span></h3>
-                <div class="heart">
-                    <span id="life">❤️❤️❤️</span>
+            <!-- Menu -->
+            <div class="menu">
+                <h2><span class="snake-anim">🐍</span> Menu <span class="snake-anim">🐍</span></h2>
+                <div class="options">
+                    <h3>Choose your level:</h3>
+                    <button>Easy</button>
+                    <button>Medium</button>
+                    <button>Hard</button>
+                </div>
+                <button id="play">PLAY</button>
+            </div>
+
+            <!-- Game -->
+            <div id="game" class="board">
+                <!-- score & life -->
+                <div class="scoreBoard">
+                    <h3>Score: <span id="score">-</span></h3>
+                    <div class="heart">
+                        <span id="life">❤️❤️❤️</span>
+                    </div>
+                </div>
+
+                <!-- grid -->
+                <div class="grid">
                 </div>
             </div>
             
-            <!-- grid -->
-            <div class="grid">
-            </div>
         </div>
 
         <!-- script JS -->

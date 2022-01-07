@@ -7,20 +7,35 @@ let snake = [2,1,0]
 let squares = []
 let direction = 1
 let indexApple = 0
+let score = 0
+let speed = 300
+let timerId = 0
 
 // document query
+const gameEl = document.getElementById('game')
+const menuEl = document.querySelector(".menu")
 const gridEl = document.querySelector(".grid")
 const scoreEl = document.getElementById("score")
 const lifeEl = document.getElementById("life")
+const playBtn = document.getElementById("play")
+
+
 
 /* ----- Grid and snake initialisation ------ */
-CreateGrid()
-Generate_Apple()
-snake.forEach(index => squares[index].classList.add("snake"))
-let timerId = setInterval(move,150)
-document.addEventListener('keydown',control)
+playBtn.addEventListener("click",set_game)
+
 
 /* ----- Functions ------ */
+function set_game(){
+    menuEl.style.display = "none";
+    gameEl.style.display = "block";
+
+    CreateGrid()
+    Generate_Apple()
+    snake.forEach(index => squares[index].classList.add("snake"))
+    timerId = setInterval(move,speed)
+    document.addEventListener('keydown',control)
+}
 
 function CreateGrid(){
     /*
@@ -34,7 +49,6 @@ function CreateGrid(){
         gridEl.appendChild(box)
         box.appendChild(span)
 
-        
         // add squares in array
         squares.push(box)
     }
@@ -48,11 +62,13 @@ function move(){
     if ((snake[0] - width < 0 && direction === -25) ||
         (snake[0] + width > long && direction === 25) ||  
         (snake[0] % 25 === 0 && direction === -1) ||
-        (snake[0] % 25 === 24 && direction === 1) ){
+        (snake[0] % 25 === 24 && direction === 1) ||
+        (squares[snake[0] + direction].classList.contains('snake')) ){
+
         return clearInterval(timerId)
+
     }
 
-   
 
     const lastEl = snake.pop()
     const newEl = snake[0] + direction
@@ -66,8 +82,6 @@ function move(){
 
     // snake eats the apple
     if (snake[0] === indexApple){
-        console.log("Pomme mangée")
-
         // delete the apple
         squares[indexApple].innerHTML = ""
 
@@ -76,6 +90,16 @@ function move(){
         
         // generate a new apple
         Generate_Apple()
+
+        // display score
+        score += 1
+        scoreEl.textContent = score
+
+        // change speed
+        clearInterval(timerId)
+        speed = speed * 0.9
+        timerId = setInterval(move,speed)
+
     }
 
 }
@@ -107,5 +131,5 @@ function Generate_Apple(){
     indexApple = Math.floor(Math.random() * long)
     const pomme = "🍎"
 
-    squares[indexApple].innerHTML =  `<span>${pomme}</span>`
+    squares[indexApple].innerHTML =  `<span class="apple">${pomme}</span>`
 }

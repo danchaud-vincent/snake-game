@@ -4,11 +4,18 @@ html,body{
     background-color: #7DAA50;
     color: #2B331B;
     font-family: 'Press Start 2P', cursive;
+    font-size: 18px;
 }
 
 h1{
     margin: 0;
     font-size: 40px;
+}
+
+h2{
+    font-size: 30px; 
+    margin: 0;
+    margin-bottom: 50px;
 }
 
 
@@ -17,13 +24,54 @@ header{
     text-align: center;
 }
 
+button{
+    
+}
+
+button:hover{
+    
+}
+
+#play{
+    background-color: #73854A;
+    color:#2B331B;
+    border: 2px solid #2B331B;
+    padding: 18px 26px;
+    cursor: pointer;
+}
+
+#play:hover{
+    box-shadow: 1px 3px #2B331B;
+    transition: transform .4s;
+    transform: scale(1.1);
+}
+
+
+/* container */
 .container{
     max-width: 500px;
     margin: 0 auto;
+
 }
+
+/* menu */
+.menu{
+    width: 100%;
+    text-align: center;
+    background-color: #73854A;
+    position: relative;
+    border: 5px solid #2B331B;
+    padding: 40px 0;
+    top: 50px;
+}
+
 
 /* Board and heart */
 .board{
+    display: none;
+}
+
+.scoreBoard{
     display: flex;
     width: 100%;
     justify-content: space-between;
@@ -52,5 +100,26 @@ header{
     background-color: #2B331B;
     border-radius: 5px;
 }
+
+/* apple */
+.apple{
+    display: block;
+    font-size: 20px;
+    animation: zoom 2s ease-out infinite;
+}
+
+@keyframes zoom {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+
 
 
