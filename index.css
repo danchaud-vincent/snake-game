@@ -1,0 +1,41 @@
+html,body{
+    margin: 0;
+    padding: 0;
+    background-color: #7DAA50;
+}
+
+h1{
+    margin: 0;
+}
+
+header{
+    margin: 40px auto 20px auto;
+    text-align: center;
+}
+
+.container{
+    max-width: 500px;
+    margin: 0 auto;
+    
+   
+}
+
+.board{
+    display: flex;
+    justify-content: space-between;
+}
+
+.grid{
+    display: flex;
+    flex-wrap: wrap;
+    height: 500px;
+    width: 500px;
+    border: 1px solid;
+    
+}
+
+.box{
+    background-color: black;
+    height: 20px;
+    width: 20px;
+}
