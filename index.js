@@ -2,7 +2,6 @@
 // init
 const long = 625;
 const width = 25;
-let lifes = ["❤️","❤️","❤️"]
 let snake = [2,1,0]
 let squares = []
 let direction = 1
@@ -11,9 +10,11 @@ let score = 0
 let speed = 300
 let timerId = 0
 
+
 // document query
 const gameEl = document.getElementById('game')
-const menuEl = document.querySelector(".menu")
+const menuEl = document.getElementById("start")
+const gameOverEl = document.getElementById("gameover")
 const gridEl = document.querySelector(".grid")
 const scoreEl = document.getElementById("score")
 const lifeEl = document.getElementById("life")
@@ -21,36 +22,66 @@ const playBtn = document.getElementById("play")
 const easyBtn = document.getElementById("easy")
 const mediumBtn = document.getElementById("medium")
 const hardBtn = document.getElementById("hard")
+const levelEl = document.getElementById("level-chosen")
 
+// level by default
+levelEl.innerHTML = "Easy"
+
+/* ------------------------------------------ */
 /* ----- Grid and snake initialisation ------ */
+/* ------------------------------------------ */
 easyBtn.addEventListener("click",function(){
+    // set speed
     speed = 300
+
+    // change classList
     mediumBtn.classList.remove("active")
     hardBtn.classList.remove("active")
     easyBtn.classList.add("active")
-   
+    
+    // display level
+    levelEl.innerHTML = "Easy"
 })
 
 mediumBtn.addEventListener("click",function(){
+    // set speed
     speed = 200
+
+    // change classList
     easyBtn.classList.remove("active")
     hardBtn.classList.remove("active")
     mediumBtn.classList.add("active")
+
+    // display level
+    levelEl.innerHTML = "Medium"
 })
 
 hardBtn.addEventListener("click",function(){
+    // set speed
     speed = 100
+
+    // change classList
     mediumBtn.classList.remove("active")
     easyBtn.classList.remove("active")
     hardBtn.classList.add("active")
+
+    // display level
+    levelEl.innerHTML = "Hard"
 })
 
 
+// Start the game
 playBtn.addEventListener("click",set_game)
 
-
-/* ----- Functions ------ */
+/* ----------------------------------- */
+/* ------------ Functions ----------- */
+/* ----------------------------------- */
 function set_game(){
+     /** 
+     * Reset the game
+     */
+
+    // Display the game
     menuEl.style.display = "none";
     gameEl.style.display = "block";
 
@@ -61,8 +92,16 @@ function set_game(){
     document.addEventListener('keydown',control)
 }
 
+function game_over(){
+     /** 
+     * Display Game Over
+     * 
+     */
+
+}
+
 function CreateGrid(){
-    /*
+    /** 
      * Function which create a grid
      */
     for (let i=0; i<long; i++){
@@ -79,8 +118,9 @@ function CreateGrid(){
 }
 
 function move(){
-    /*
-     * move the snake with the board
+    /** 
+     * move the snake with the board 
+     * End the game when the snake hits a border
      */
 
     if ((snake[0] - width < 0 && direction === -25) ||
@@ -89,6 +129,7 @@ function move(){
         (snake[0] % 25 === 24 && direction === 1) ||
         (squares[snake[0] + direction].classList.contains('snake')) ){
 
+        game_over()
         return clearInterval(timerId)
 
     }

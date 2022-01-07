@@ -80,7 +80,6 @@ header{
     top: 50px;
 }
 
-
 /* Board and heart */
 .board{
     display: none;
@@ -99,11 +98,29 @@ header{
 /* Grid and squares */
 .grid{
     display: flex;
+    width: 100%;
     flex-wrap: wrap;
     height: 500px;
     width: 500px;
     border: 5px solid #2B331B;
+
+    justify-content: center;
+    
 }
+
+.grid h2{
+    position: absolute;
+    top: 50%;
+    font-size: 60px;
+}
+
+.over{
+    /**
+    * Pour un inline element (ex: span) display block permet un retour à la ligne
+    */
+    display: block;
+}
+
 
 .box{
     height: 20px;
@@ -123,6 +140,13 @@ header{
     animation: zoom 2s ease-out infinite;
 }
 
+/*snake title*/
+.snake-anim{
+    display: inline-block;
+    font-size: 30px;
+    animation: rotate 2s ease-out infinite;
+}
+
 @keyframes zoom {
     0% {
         transform: scale(1);
@@ -134,6 +158,20 @@ header{
         transform: scale(1);
     }
 }
+
+
+@keyframes rotate {
+    0% {
+        transform: rotateZ(3deg);
+    }
+    50% {
+        transform: rotateZ(-10deg);
+    }
+    100% {
+        transform: rotateZ(3deg);
+    }
+}
+
 
 
 

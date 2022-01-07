@@ -20,11 +20,11 @@
         <div class="container">
 
             <!-- Menu -->
-            <div class="menu">
+            <div id="start" class="menu">
                 <h2><span class="snake-anim">🐍</span> Menu <span class="snake-anim">🐍</span></h2>
                 <div class="options">
                     <h3>Choose your level:</h3>
-                    <button id="easy" class="level">Easy</button>
+                    <button id="easy" class="level active">Easy</button>
                     <button id="medium" class="level">Medium</button>
                     <button id="hard" class="level">Hard</button>
                 </div>
@@ -36,13 +36,12 @@
                 <!-- score & life -->
                 <div class="scoreBoard">
                     <h3>Score: <span id="score">-</span></h3>
-                    <div class="heart">
-                        <span id="life">❤️❤️❤️</span>
-                    </div>
+                    <h3><span id="level-chosen"></span></h3>
                 </div>
 
                 <!-- grid -->
                 <div class="grid">
+                    <h2 id="end">GAME <span class="over">OVER!</span></h2>
                 </div>
             </div>
             
