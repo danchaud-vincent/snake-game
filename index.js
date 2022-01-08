@@ -124,9 +124,6 @@ function reset(){
     gameEl.style.display = "none";
     menuEl.style.display = "block";
     
-
-    console.log("reset")
-
 }
 
 function CreateGrid(){
