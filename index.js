@@ -14,7 +14,6 @@ let timerId = 0
 // document query
 const gameEl = document.getElementById('game')
 const menuEl = document.getElementById("start")
-const gameOverEl = document.getElementById("gameover")
 const gridEl = document.querySelector(".grid")
 const scoreEl = document.getElementById("score")
 const lifeEl = document.getElementById("life")
@@ -23,6 +22,7 @@ const easyBtn = document.getElementById("easy")
 const mediumBtn = document.getElementById("medium")
 const hardBtn = document.getElementById("hard")
 const levelEl = document.getElementById("level-chosen")
+const endMessage = document.getElementById("end")
 
 // level by default
 levelEl.innerHTML = "Easy"
@@ -73,6 +73,11 @@ hardBtn.addEventListener("click",function(){
 // Start the game
 playBtn.addEventListener("click",set_game)
 
+
+// End the game
+endMessage.addEventListener("click",reset)
+  
+
 /* ----------------------------------- */
 /* ------------ Functions ----------- */
 /* ----------------------------------- */
@@ -92,11 +97,35 @@ function set_game(){
     document.addEventListener('keydown',control)
 }
 
-function game_over(){
-     /** 
-     * Display Game Over
+function reset(){
+    /** 
+     * reset the variables and the game
      * 
      */
+
+    // stop interval
+    clearInterval(timerId)
+    
+    // reset variables
+    snake = [2,1,0]
+    direction = 1
+    score = 0
+    speed = 300
+    timerId = 0
+
+    // remove classlist
+    endMessage.style.display = "none";
+    gridEl.classList.remove("inactive")
+    squares.forEach(elem => elem.classList.remove("snake"))
+    squares[indexApple].innerHTML = ""
+    scoreEl.innerHTML = "-"
+
+    // Display the menu
+    gameEl.style.display = "none";
+    menuEl.style.display = "block";
+    
+
+    console.log("reset")
 
 }
 
@@ -129,7 +158,11 @@ function move(){
         (snake[0] % 25 === 24 && direction === 1) ||
         (squares[snake[0] + direction].classList.contains('snake')) ){
 
-        game_over()
+        // Display Game Over message
+        gridEl.classList.add("inactive")
+        endMessage.style.display = "block";
+
+
         return clearInterval(timerId)
 
     }
