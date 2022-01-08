@@ -2,6 +2,7 @@
 // init
 const long = 625;
 const width = 25;
+let bestScore = []
 let snake = [2,1,0]
 let squares = []
 let direction = 1
@@ -23,6 +24,8 @@ const mediumBtn = document.getElementById("medium")
 const hardBtn = document.getElementById("hard")
 const levelEl = document.getElementById("level-chosen")
 const endMessage = document.getElementById("end")
+const bestScoreMessage = document.getElementById("bestscore")
+const bestScoreEl = document.getElementById("result")
 
 // level by default
 levelEl.innerHTML = "Easy"
@@ -103,6 +106,9 @@ function reset(){
      * 
      */
 
+    // add score to bestScore
+    bestScore.push(score)
+
     // stop interval
     clearInterval(timerId)
     
@@ -117,12 +123,24 @@ function reset(){
     endMessage.style.display = "none";
     gridEl.classList.remove("inactive")
     squares.forEach(elem => elem.classList.remove("snake"))
+
+    // reset score and remove appl
     squares[indexApple].innerHTML = ""
     scoreEl.innerHTML = "-"
+    
+    // reset level button
+    mediumBtn.classList.remove("active")
+    hardBtn.classList.remove("active")
+    easyBtn.classList.add("active")
+    levelEl.innerHTML = "Easy"
 
     // Display the menu
-    gameEl.style.display = "none";
-    menuEl.style.display = "block";
+    gameEl.style.display = "none"
+    menuEl.style.display = "block"
+
+    // display bestscore
+    bestScoreMessage.style.display = "block"
+    bestScoreEl.innerHTML = Math.max.apply(null,bestScore)
     
 }
 

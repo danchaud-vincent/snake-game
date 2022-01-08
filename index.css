@@ -146,6 +146,10 @@ header{
     opacity: 0.4;
 }
 
+#bestscore{
+    display: none;
+}
+
 
 /* snake */
 .snake{
